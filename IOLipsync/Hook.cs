@@ -27,7 +27,7 @@ namespace IOLipsync
         public void AddConfigs()
         {
             LipsyncConfig.DebugMenu = Config.Bind<bool>(new ConfigDefinition("Debug", "Debug Menu"), false);
-            LipsyncConfig.MouthOpenness = Config.Bind<float>(new ConfigDefinition("Debug", "Mouth Openness"), 100f);
+            LipsyncConfig.MouthOpenness = Config.Bind<float>(new ConfigDefinition("Debug", "Mouth Openness"), 200f);
         }
     }
 
