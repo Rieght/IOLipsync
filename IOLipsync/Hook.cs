@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace IOLipsync
 {
-   [BepInEx.BepInPlugin(_guid, "IOLipsync", "1.0.0")]
+    [BepInEx.BepInPlugin(_guid, "IOLipsync", "1.0.0")]
     public class Hook : BaseUnityPlugin
     {
         private const string _guid = "rieght.insultorder.iolipsync";
@@ -28,6 +28,7 @@ namespace IOLipsync
         {
             LipsyncConfig.DebugMenu = Config.Bind<bool>(new ConfigDefinition("Debug", "Debug Menu"), false);
             LipsyncConfig.MouthOpenness = Config.Bind<float>(new ConfigDefinition("Debug", "Mouth Openness"), 200f);
+            LipsyncConfig.MouthSmoothness = Config.Bind<float>(new ConfigDefinition("Debug", "Mouth Smoothness"), 20f);
         }
     }
 
@@ -35,6 +36,7 @@ namespace IOLipsync
     {
         public ConfigEntry<bool> DebugMenu { get; set; }
         public ConfigEntry<float> MouthOpenness { get; set; }
+        public ConfigEntry<float> MouthSmoothness { get; set; }
     }
 
     public static class LipsyncDebug
@@ -53,7 +55,6 @@ namespace IOLipsync
         private static readonly int _numSamples = 1024;
         private static float[] _samples = new float[_numSamples];
         private static float _sum;
-        private static float _rms;
         private static float _openness;
 
         private static readonly string _nekoPath = "CH01/CH0001/HS_kiten/bip01/bip01 Pelvis/bip01 Spine/bip01 Spine1/bip01 Spine2/bip01 Neck/bip01 Head/HS_HeadScale/HS_Head";
@@ -73,12 +74,12 @@ namespace IOLipsync
             {
                 _sum = _samples[i] * _samples[i];
             }
-            _rms = Mathf.Sqrt(_sum / _numSamples);
-            _openness = Mathf.Clamp01(_rms * Hook.LipsyncConfig.MouthOpenness.Value);
+            _sum  = Mathf.Sqrt(_sum / _numSamples);
+            _openness = Mathf.SmoothStep(_openness, _sum, Time.deltaTime * Hook.LipsyncConfig.MouthSmoothness.Value);
 
             // TODO: Maybe add some movement to the face (layer 2, default 1f)
 
-            _animator.SetLayerWeight(7, _openness);
+            _animator.SetLayerWeight(7, Mathf.Clamp01(_openness * Hook.LipsyncConfig.MouthOpenness.Value));
         }
 
         // Get animator and audiosource when Neko/Tomoe says a new line.
