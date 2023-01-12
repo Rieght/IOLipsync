@@ -29,8 +29,8 @@ namespace IOLipsync
         {
             LipsyncConfig.DebugMenu = Config.Bind<bool>(new ConfigDefinition("Debug", "Debug Menu"), false);
             LipsyncConfig.MouthOpenness = Config.Bind<float>(new ConfigDefinition("Mouth Movement", "Mouth Openness"), 200f);
-            LipsyncConfig.MouthSmoothness = Config.Bind<float>(new ConfigDefinition("Mouth Movement", "Mouth Smoothness"), 20f); LipsyncConfig.MouthOpenness = Config.Bind<float>(new ConfigDefinition("Mouth", "Mouth Openness"), 200f);
-            LipsyncConfig.EyeOpenness = Config.Bind<float>(new ConfigDefinition("Eye Movement", "Eye Openness"), 200f); LipsyncConfig.MouthOpenness = Config.Bind<float>(new ConfigDefinition("Mouth", "Mouth Openness"), 200f);
+            LipsyncConfig.MouthSmoothness = Config.Bind<float>(new ConfigDefinition("Mouth Movement", "Mouth Smoothness"), 20f); 
+            LipsyncConfig.EyeOpenness = Config.Bind<float>(new ConfigDefinition("Eye Movement", "Eye Openness"), 200f); 
             LipsyncConfig.EyeSmoothness = Config.Bind<float>(new ConfigDefinition("Eye Movement", "Eye Smoothness"), 10f);
         }
     }
