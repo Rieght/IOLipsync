@@ -7,7 +7,7 @@ Check [Releases](https://github.com/Rieght/IOLipsync/releases)
 ## How to use
 Copy IOLipsync.dll to your "GameData\BepInEx\plugins" folder inside the game directory.
 
-You can change the strength/smoothness of the mouth/eye movement in "Gamedata\BepInEx\config\rieght.insultorder.iolipsync.cfg" or (Needs to run at least once) or via the F12-menu.
+You can change the strength/smoothness of the mouth/eye movement in "Gamedata\BepInEx\config\rieght.insultorder.iolipsync.cfg" (Needs to run at least once) or via the F12-menu.
 Eyemovement can be disabled.
 
 ## Additional Informations
