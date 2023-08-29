@@ -14,3 +14,6 @@ Eyemovement can be disabled.
 Lipsync during adv-events can't be added. The animation layer of the mouth movement(3) is overridden by the animation layer of the character movement(4).
 
 The original lipsync method can be found in KutiPaku.VoiceRip().
+
+## My other plugins
+[IOSubtitles](https://github.com/Rieght/IOSubtitles)
